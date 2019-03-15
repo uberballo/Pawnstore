@@ -10,6 +10,14 @@ def tasks_index():
 def tasks_form():
     return render_template("tasks/new.html")
 
+@app.route("/task/<task_id>/", methods=["POST"])
+def tasks_set_done(task_id):
+    t = Task.query.get(task_id)
+    t.done = not t.done
+    db.session().commit()
+
+    return redirect(url_for("tasks_index"))
+
 @app.route("/tasks/", methods=["POST"])
 def tasks_create():
     t = Task(request.form.get("name"))
