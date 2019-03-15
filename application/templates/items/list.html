@@ -1,0 +1,22 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Available</th>
+    </tr>
+    {% for item in items%}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.available}}</td>
+      <td>
+        <form method="POST" action="{{ url_for('items_set_availability', item_id=item.id) }}">
+          <input type="submit" value="Change availability!"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
