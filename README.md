@@ -3,3 +3,4 @@ Pawnstore project. User can lend and borrow items. At the beginning any cash tra
 
 [Pawnstore heroku link](https://pawnstore.herokuapp.com/)  
 [User stories](https://github.com/uberballo/Pawnstore/blob/master/documentation/userStories.md)  
+[Database chart](https://github.com/uberballo/Pawnstore/blob/master/documentation/databaseChart.png) 
