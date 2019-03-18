@@ -17,9 +17,11 @@
     <ul>
       <li>
         <a href="{{url_for('items_index')}}">List items</a>
-        <a href="{{url_for('user_create')}}">Create user</a>
       </li>
       <li><a href="{{url_for('items_form')}}">Add a item</a></li>
+      <li>
+        <a href="{{url_for('user_create')}}">Create user</a>
+      </li>
     </ul>
 
     {% block body %}

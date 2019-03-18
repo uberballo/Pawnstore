@@ -8,7 +8,9 @@ class Item(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     available = db.Column(db.Boolean, nullable=False)
-    borrowedBy = db.Column(db.String(100), nullable=True)
+
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
+                           nullable=False)
 
     def __init__(self, name):
         self.name = name
