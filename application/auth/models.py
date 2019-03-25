@@ -1,6 +1,8 @@
 from application import db
 from application.models import Base
 
+from sqlalchemy.sql import text
+
 class User(Base):
 
     __tablename__ = "account"
@@ -28,3 +30,17 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def find_all_available_items():
+        stmt = text("SELECT Item.name FROM Item"
+                    " WHERE Item.available = 1")
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            print(row)
+            response.append({"name":row[0] })
+
+        return response

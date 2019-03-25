@@ -4,4 +4,19 @@
 <p>
   Welcome to the Pawn store
 </p>
+
+{% if items_available is defined %}
+<p>
+  The following items are available:
+</p>
+
+<ul>
+  {% for item in items_available %}
+  <li>
+    {{item.name}}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 {% endblock %}
