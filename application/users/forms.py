@@ -6,7 +6,7 @@ class UserForm(FlaskForm):
     ,[validators.length(min=2,max=30)])
     password = PasswordField("Password",[validators.InputRequired()
     ,validators.EqualTo('confirm',message= 'Passwords must match')])
-    confirm = PasswordField('Repeact password')
+    confirm = PasswordField('Repeat password')
 
     class Meta:
         csrf = False
