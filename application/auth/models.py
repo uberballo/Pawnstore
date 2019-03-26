@@ -34,7 +34,7 @@ class User(Base):
     @staticmethod
     def find_all_available_items():
         stmt = text("SELECT Item.name FROM Item"
-                    " WHERE Item.available = 1")
+                    " WHERE Item.available = '1'")
 
         res = db.engine.execute(stmt)
 
