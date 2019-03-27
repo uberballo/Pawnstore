@@ -20,7 +20,7 @@ def user_create():
 
     u = User(username=request.form.get("username"),
              password=request.form.get("password"),
-             name="temp")
+             name=request.form.get("name"))
 
 
     db.session().add(u)

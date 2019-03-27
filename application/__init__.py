@@ -17,16 +17,19 @@ else:
 db = SQLAlchemy(app)
 
 
-#Sovelluksen toiminnallisuudet
 from application import views
 
+
+#Items
 from application.items import models
 from application.items import views 
 
+from application.category import models
+
+#user
 from application.auth import models
 from application.auth import views
 
-#Käyttäjän luonti
 from application.users import views
 
 #kirjautuminen

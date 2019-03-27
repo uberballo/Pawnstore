@@ -42,9 +42,13 @@ def items_create():
     if not form.validate():
         return render_template("items/new.html", form = form)
 
+
+    ##Nyt lisätään temp category_id, pitää korjata että käyttäjä voi lisätä itse
+    ## formissa ei voi valita vielä
     item = Item(form.name.data)
     item.available = form.available.data
     item.account_id = current_user.id
+    item.category_id = 0
 
 
     db.session().add(item)
