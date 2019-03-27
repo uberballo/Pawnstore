@@ -48,7 +48,6 @@ def items_create():
     item = Item(form.name.data)
     item.available = form.available.data
     item.account_id = current_user.id
-    item.category_id = 0
 
 
     db.session().add(item)
