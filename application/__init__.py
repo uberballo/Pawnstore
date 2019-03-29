@@ -6,6 +6,8 @@ import os
 
 #database
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.event import listen
+from sqlalchemy import event
 
 if os.environ.get("HEROKU"):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
@@ -25,6 +27,15 @@ from application.items import models
 from application.items import views 
 
 from application.category import models
+
+
+##We initiliaze the database category with basic categories
+@event.listens_for(models.Category.__table__,'after_create')
+def insert_initial_values(*args, **kwargs):
+    db.session.add(models.Category(name='Animal'))
+    db.session.commit()
+
+insert_initial_values()
 
 #user
 from application.auth import models
@@ -50,5 +61,6 @@ def load_user(user_id):
 
 try:
     db.create_all()
+
 except: 
     pass

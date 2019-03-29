@@ -31,6 +31,7 @@ class User(Base):
     def is_authenticated(self):
         return True
 
+
     @staticmethod
     def find_all_available_items():
         stmt = text("SELECT Item.name FROM Item"

@@ -12,3 +12,8 @@ class Category(db.Model):
 
     def __init__(self, name):
         self.name = name
+
+    @staticmethod
+    def insert_initial_values():
+        db.session.add(Category(name='eläin'))
+        db.session.comit()
