@@ -32,7 +32,7 @@ from application.category import models
 ##We initiliaze the database category with basic categories
 @event.listens_for(models.Category.__table__,'after_create')
 def insert_initial_values(*args, **kwargs):
-    db.session.add(models.Category(name='Animal'))
+    db.session.add(models.Category(category_type='Animal'))
     db.session.commit()
 
 insert_initial_values()
@@ -55,12 +55,14 @@ login_manager.init_app(app)
 login_manager.login_view= "auth_login"
 login_manager.login_message = "Please log in to use the pawnstore"
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
 try:
     db.create_all()
+    insert_initial_values()
 
 except: 
     pass

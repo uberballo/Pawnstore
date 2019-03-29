@@ -17,5 +17,4 @@ class Item(Base):
 
     def __init__(self, name):
         self.name = name
-        self.available= True 
-        self.borrowedBy = "temp"
+        self.available= True

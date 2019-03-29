@@ -6,14 +6,12 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    name = db.Column(db.String(144), nullable=False)
+    category_type = db.Column(db.String(144), nullable=False)
 
     item = db.relationship("Item", backref='category', lazy=True)
 
-    def __init__(self, name):
-        self.name = name
-
-    @staticmethod
-    def insert_initial_values():
-        db.session.add(Category(name='eläin'))
-        db.session.comit()
+    def __init__(self, category_type):
+        self.category_type= category_type 
+  
+    def get_type(self):
+        return self.category_type
