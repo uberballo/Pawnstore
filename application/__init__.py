@@ -8,6 +8,7 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.event import listen
 from sqlalchemy import event
+from sqlalchemy.sql import text
 
 if os.environ.get("HEROKU"):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
@@ -30,14 +31,17 @@ from application.category import models
 
 
 ##We initiliaze the database category with basic categories
-@event.listens_for(models.Category.__table__,'after_create')
-def insert_initial_values(*args, **kwargs):
-    db.session.add(models.Category(category_type='Animal'))
-    db.session.commit()
-
-insert_initial_values()
-
+#@event.listens_for(models.Category.__table__,'after_create')
+##
 #user
+
+def insert_data(target, connection, **kw):
+    connection.execute(target.insert(),
+    {'category_type':'Animal'},
+    {'category_type':'Food'})
+
+    
+event.listen(models.Category.__table__, 'after_create',insert_data)
 from application.auth import models
 from application.auth import views
 
@@ -56,6 +60,7 @@ login_manager.login_view= "auth_login"
 login_manager.login_message = "Please log in to use the pawnstore"
 
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
@@ -63,6 +68,5 @@ def load_user(user_id):
 try:
     db.create_all()
     insert_initial_values()
-
 except: 
     pass

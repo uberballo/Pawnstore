@@ -25,7 +25,7 @@ def items_form():
     form.category.choices = categories
 
     return render_template("items/new.html", form = form)
-
+        
 @app.route("/items/<item_id>", methods=["POST"])
 @login_required
 def items_set_availability(item_id):
@@ -39,8 +39,10 @@ def items_set_availability(item_id):
 @login_required
 def remove_item(item_id):
     item = Item.query.get(item_id)
-    db.session().delete(item)
-    db.session().commit()
+    print(current_user)
+    if item.account_id == current_user.id:
+        db.session().delete(item)
+        db.session().commit()
 
     return redirect(url_for("items_index"))
 
