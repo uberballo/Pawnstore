@@ -11,17 +11,32 @@
     <tr>
       <td>{{ item.name }}</td>
       <td>{{ item.available}}</td>
-      <td>
-        <form method="POST" action="{{ url_for('items_set_availability', item_id=item.id) }}">
-          <input type="submit" value="Change availability!"/>
+  {% if item.available ==  1%}
+    
+      <td >
+        <form method="POST" action="{{ url_for('borrow_item', item_id=item.id) }}">
+          <button type="submit" class="btn btn-primary">
+            Borrow
+          </button>
         </form>
       </td>
-      <td>
+  {% else %}
+  <td>
+    <button class="btn btn-primary" disabled>
+      Borrow
+      </button>
+
+  </td>
+  {% endif %}
+      <td id = "remove_button">
         <form method="POST" action="{{ url_for('remove_item',item_id=item.id) }}">
-          <input type="submit" value="Remove item" />
+          <button type="submit" class="btn btn-primary">
+           Remove 
+          </button>
         </form>
       </td>
     </tr>
     {% endfor %}
   </table>
+
 {% endblock %}

@@ -2,56 +2,31 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('user_create') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.username.label }}
-      </td>
-      <td>
-        {{ form.username }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.username.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-         {{ form.name.label}}
-      </td>
-      <td>
-        {{ form.name }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.password.label }}
-      </td>
-      <td>
-        {{ form.password }}
-      </td>
-      <td>
-        {{ form.confirm.label }}
-      </td>
-      <td>
-        {{ form.confirm}}
-      </td>
-      <td>
-        <ul>
+  <div class="form-group">
+    <label for="username" >
+      {{ form.username.label  }}
+    </label>
+    <input type="username" class="form-control" id="username" name="username"  placeholder="enter a username" >
+    <small id="usernameHelp" class="form-text text-muted">This will be a public username</small>
+  </div>
+  <div class="form-group">
+    <label for="name" >
+      {{ form.name.label  }}
+    </label>
+    <input type="name" class="form-control" id="name" name="name"  placeholder="enter your name" >
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="confirm">repeat your password</label>
+    <input type="password" class="form-control" id="confirm" name="confirm" placeholder="Password">
           {% for error in form.password.errors %}
           <li>{{ error }}</li>
           {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input type="submit" value="Add a new user" />
-      </td>
-    </tr>
-  </table>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 {% endblock %}

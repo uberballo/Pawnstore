@@ -46,6 +46,17 @@ def remove_item(item_id):
 
     return redirect(url_for("items_index"))
 
+@app.route("/borrow/<item_id>", methods=["POST"])
+@login_required
+def borrow_item(item_id):
+    item = Item.query.get(item_id)
+    item.borrowed = True
+    item.borrowed_by_id = current_user.id
+    item.available = False
+    db.session().add(item)
+    db.session().commit()
+
+    return redirect(url_for("items_index"))
 
 @app.route("/items/", methods=["POST"])
 @login_required

@@ -13,6 +13,9 @@ class Item(Base):
 
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'),
      nullable=False)
+
+    borrowed = db.Column(db.Boolean, nullable = True)
+    borrowed_by_id = db.Column(db.Integer, nullable = True)
     
 
     def __init__(self, name):
