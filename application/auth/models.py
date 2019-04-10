@@ -31,6 +31,10 @@ class User(Base):
     def is_authenticated(self):
         return True
 
+    #Currently users are all admins. 
+    def roles(self):
+        return ["ADMIN"]
+
 
     @staticmethod
     def find_all_available_items():
