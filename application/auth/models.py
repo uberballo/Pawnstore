@@ -31,9 +31,9 @@ class User(Base):
     def is_authenticated(self):
         return True
 
-    #Currently users are all admins. 
+    #Currently users are all basic. 
     def roles(self):
-        return ["ADMIN"]
+        return ["BASIC"]
 
 
     @staticmethod

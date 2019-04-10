@@ -39,8 +39,8 @@ def items_set_availability(item_id):
 @login_required(role="ANY")
 def remove_item(item_id):
     item = Item.query.get(item_id)
-    print(current_user)
-    if item.account_id == current_user.id:
+    #item creator or the admin can delete items.
+    if item.account_id == current_user.id or current_user.roles()[0]=="ADMIN":
         db.session().delete(item)
         db.session().commit()
 
@@ -62,7 +62,6 @@ def borrow_item(item_id):
 @login_required(role="ANY")
 def items_create():
     form = ItemForm(request.form)
-    print(form.validate())
 
     ## validation doesn't work anymore.
     '''
