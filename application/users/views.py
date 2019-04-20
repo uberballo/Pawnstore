@@ -3,9 +3,15 @@ from application import app, db
 from application.auth.models import User
 from application.users.forms import UserForm
 
-@app.route("/users/", methods=["GET"])
+@app.route("/users/new", methods=["GET"])
 def user_create_form():
     return render_template("users/new.html", form = UserForm())
+
+
+@app.route("/users/", methods=["GET"])
+def users_index():
+    return render_template("users/list.html", users=User.query.all())
+
 
 @app.route("/user/", methods=["GET","POST"])
 def user_create():

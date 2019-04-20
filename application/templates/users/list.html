@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+ <table>
+     <tr>
+        <th>User</th>
+        <th>Role</th>
+     </tr>
+     {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.roles()[0] }}</td>
+        </tr>
+    {% endfor %}
+ </table>
+ {% endblock %}
