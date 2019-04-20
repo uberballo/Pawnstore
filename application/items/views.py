@@ -59,6 +59,19 @@ def borrow_item(item_id):
 
     return redirect(url_for("items_index"))
 
+@app.route("/return/<item_id>", methods=["POST"])
+@login_required(role="ADMIN")
+def return_item(item_id):
+    item = Item.query.get(item_id)
+    item.borrowed = False
+    item.borrowed_by_id = None
+    item.available = True
+    db.session().add(item)
+    db.session().commit()
+
+    return redirect(url_for("items_index"))
+
+
 @app.route("/items/", methods=["POST"])
 @login_required(role="ANY")
 def items_create():
