@@ -89,7 +89,7 @@ def insert_admin(target, connection, **kw):
     {'name':'admin'},
     {'username':'admin'},
     {'password':'admin'},
-    {'roles':'ADMIN'})
+    {'role':'ADMIN'})
     
 event.listen(models.Category.__table__, 'after_create',insert_data)
 from application.auth import models
@@ -100,8 +100,8 @@ from application.users import views
 
 from application.auth.models import User
 
-#Insert admin credentials 
-#event.listen(auth.models.Users.__table__, 'after_create',insert_admin)
+#Insert admin credentials. Doesnt work.
+event.listen(models.User.__table__, 'after_create',insert_admin)
 
 @login_manager.user_loader
 def load_user(user_id):
