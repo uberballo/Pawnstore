@@ -33,7 +33,7 @@ class User(Base):
 
     #Currently users are all basic. 
     def roles(self):
-        return ["BASIC"]
+        return ["ADMIN"]
 
 
     @staticmethod

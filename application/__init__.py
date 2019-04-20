@@ -31,6 +31,10 @@ login_manager.setup_app(app)
 login_manager.login_view = "auth_login"
 login_manager.login_message = "Please login to use this functionality."
 
+#We initiliaze a not logged in user.
+from application.auth.anonymous import Anonymous
+login_manager.anonymous_user = Anonymous
+
 from functools import wraps
 
 def login_required(role="ANY"):

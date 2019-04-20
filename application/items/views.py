@@ -9,7 +9,8 @@ from application.category.models import Category
 
 @app.route("/items", methods=["GET"])
 def items_index():
-    return render_template("items/list.html", items = Item.query.all())
+        print(current_user.roles())
+        return render_template("items/list.html", items = Item.query.all(), current_user_role=current_user.roles()[0])
 
 
 @app.route("/items/new")
