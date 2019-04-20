@@ -9,7 +9,14 @@
      {% for user in users %}
         <tr>
             <td>{{ user.name }}</td>
-            <td>{{ user.roles()[0] }}</td>
+            <td>{{ user.roles() }}</td>
+            <td>
+            <form method="POST" action="{{ url_for('set_user_privilege', user_id=user.id) }}">
+                <button type="submit" class="btn btn-primary">
+                    Toggle
+                </button>
+            </form>
+            </td>
         </tr>
     {% endfor %}
  </table>

@@ -1,5 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from application import app, db
+from flask_login import  current_user
+
+from application import app, db, login_required
 from application.auth.models import User
 from application.users.forms import UserForm
 
@@ -9,8 +11,21 @@ def user_create_form():
 
 
 @app.route("/users/", methods=["GET"])
+@login_required(role="ADMIN")
 def users_index():
     return render_template("users/list.html", users=User.query.all())
+
+@app.route("/users/privilege/<user_id>", methods=["POST"])
+@login_required(role="ADMIN")
+def set_user_privilege(user_id):
+    user = User.query.get(user_id)
+    if user.roles() == "ADMIN":
+        user.role =  "BASIC" 
+    else:
+        user.role =  "ADMIN" 
+    db.session().commit()
+
+    return redirect(url_for("users_index"))
 
 
 @app.route("/user/", methods=["GET","POST"])

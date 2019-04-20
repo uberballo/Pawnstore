@@ -14,10 +14,13 @@ class User(Base):
 
     items = db.relationship("Item", backref='account', lazy=True)
 
+    role = db.Column(db.String(144), nullable=False)
+
     def __init__(self, name, username, password):
         self.name = name
         self.username = username
         self.password = password
+        self.role = "BASIC"
   
     def get_id(self):
         return self.id
@@ -33,7 +36,7 @@ class User(Base):
 
     #Currently users are all basic. 
     def roles(self):
-        return ["ADMIN"]
+        return self.role
 
 
     @staticmethod
