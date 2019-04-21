@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %}
- <table>
+ <table class="table">
+     <thead>
      <tr>
         <th>User</th>
         <th>Role</th>
      </tr>
+     </thead>
      {% for user in users %}
         <tr>
             <td>{{ user.name }}</td>

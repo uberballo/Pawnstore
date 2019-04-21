@@ -2,15 +2,23 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
+  <table class = "table">
+    <thead >
     <tr>
-      <th>Item</th>
-      <th>Available</th>
+      <th >Item</th>
+      <th scope="col">Available</th>
+
     </tr>
+    </thead>
+  <tbody>
     {% for item in items%}
     <tr>
       <td>{{ item.name }}</td>
-      <td>{{ item.available}}</td>
+      {% if item.available == 1 %}
+      <td>Yes</td>
+      {% else %}
+      <td>No</td>
+      {% endif %}
   {% if item.available ==  1%}
     
       <td >
@@ -47,6 +55,6 @@
       </td>
     </tr>
     {% endfor %}
+</tbody>
   </table>
-
 {% endblock %}
