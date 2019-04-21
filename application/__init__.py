@@ -84,12 +84,14 @@ def insert_data(target, connection, **kw):
     {'category_type':'Animal'},
     {'category_type':'Food'})
 
+
 def insert_admin(target, connection, **kw):
     connection.execute(target.insert(),
-    {'name':'admin'},
-    {'username':'admin'},
-    {'password':'admin'},
-    {'role':'ADMIN'})
+    {'name':'admin',
+    'username':'admin',
+    'password':'admin',
+    'role':'ADMIN'})
+
     
 event.listen(models.Category.__table__, 'after_create',insert_data)
 from application.auth import models
@@ -100,7 +102,6 @@ from application.users import views
 
 from application.auth.models import User
 
-#Insert admin credentials. Doesnt work.
 event.listen(models.User.__table__, 'after_create',insert_admin)
 
 @login_manager.user_loader
