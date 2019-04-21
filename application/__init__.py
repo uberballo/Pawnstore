@@ -81,8 +81,12 @@ from application.category import models
 #We insert few categories to the category table. 
 def insert_data(target, connection, **kw):
     connection.execute(target.insert(),
-    {'category_type':'Animal'},
-    {'category_type':'Food'})
+    {'category_type':'CD'},
+    {'category_type':'Food'},
+    {'category_type':'Game'},
+    {'category_type':'Movie'},
+    {'category_type':'Tool'},
+    {'category_type':'Homework'})
 
 
 def insert_admin(target, connection, **kw):

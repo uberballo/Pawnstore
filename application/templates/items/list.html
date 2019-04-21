@@ -5,8 +5,9 @@
   <table class = "table">
     <thead >
     <tr>
-      <th >Item</th>
+      <th scope="col">Item</th>
       <th scope="col">Available</th>
+      <th scope="col">Category</th>
 
     </tr>
     </thead>
@@ -19,10 +20,12 @@
       {% else %}
       <td>No</td>
       {% endif %}
+
+      <td>{{ item.category_type}}</td>
   {% if item.available ==  1%}
     
       <td >
-        <form method="POST" action="{{ url_for('borrow_item', item_id=item.id) }}">
+        <form method="POST" action="{{ url_for('borrow_item', item_id=item.itemid) }}">
           <button type="submit" class="btn btn-primary">
             Borrow
           </button>
@@ -31,7 +34,7 @@
   {% else %}
   {% if current_user_role == "ADMIN" %}
       <td >
-        <form method="POST" action="{{ url_for('return_item', item_id=item.id) }}">
+        <form method="POST" action="{{ url_for('return_item', item_id=item.itemid) }}">
           <button type="submit" class="btn btn-primary">
             Release
           </button>
@@ -47,7 +50,7 @@
   {% endif %}
   {% endif %}
       <td id = "remove_button">
-        <form method="POST" action="{{ url_for('remove_item',item_id=item.id) }}">
+        <form method="POST" action="{{ url_for('remove_item',item_id=item.itemid) }}">
           <button type="submit" class="btn btn-primary">
            Remove 
           </button>

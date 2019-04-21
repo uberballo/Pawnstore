@@ -1,6 +1,8 @@
 from flask import redirect, render_template, request, url_for
 from flask_login import  current_user
 
+from sqlalchemy.sql import text
+
 from application import app, db, login_required
 from application.items.models import Item
 from application.items.forms import ItemForm 
@@ -9,8 +11,15 @@ from application.category.models import Category
 
 @app.route("/items", methods=["GET"])
 def items_index():
-        print(current_user.roles())
-        return render_template("items/list.html", items = Item.query.all(), current_user_role=current_user.roles())
+        stmt = text('''SELECT *, item.id AS itemid
+        FROM Item
+        JOIN category ON Item.category_id = Category.id
+        ''')
+
+        res = db.engine.execute(stmt)
+
+        return render_template("items/list.html", items = res, current_user_role=current_user.roles())
+        #return render_template("items/list.html", items = Item.query.all(), current_user_role=current_user.roles())
 
 
 @app.route("/items/new")
