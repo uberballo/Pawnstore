@@ -10,7 +10,7 @@ from application.category.models import Category
 @app.route("/items", methods=["GET"])
 def items_index():
         print(current_user.roles())
-        return render_template("items/list.html", items = Item.query.all(), current_user_role=current_user.roles()[0])
+        return render_template("items/list.html", items = Item.query.all(), current_user_role=current_user.roles())
 
 
 @app.route("/items/new")
@@ -41,7 +41,7 @@ def items_set_availability(item_id):
 def remove_item(item_id):
     item = Item.query.get(item_id)
     #item creator or the admin can delete items.
-    if item.account_id == current_user.id or current_user.roles()[0]=="ADMIN":
+    if item.account_id == current_user.id or current_user.roles()=="ADMIN":
         db.session().delete(item)
         db.session().commit()
 
