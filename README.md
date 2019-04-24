@@ -41,7 +41,7 @@ Now you may add items or borrow them. As the items owner, you may delete them.
 
 ## Test accounts
 There aren't any basic accounts, as you have to make them yourself, but there is always a admin account.   
-Admin account credentials are: 
+Admin account credentials are:  
+        
         Username: admin
-
         Password: admin
