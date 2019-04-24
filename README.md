@@ -36,3 +36,12 @@ At first you should make a account, so you can fully utilize the application
 Now you may add items or borrow them. As the items owner, you may delete them.
 * To add items, choose `Add a item` and fill the form. Fill the items name, what category it belongs to and if it is available. It will instantly show on the list
 * To browse items, choose `Items`. Here you can browse the items, borrow and delete them. If the item is available, you may borrow it. If you're the items owner, you may delete it.
+* To return borrowed item, you need to let the admins to check the borrowed item, then they will accept the item back. This is to ensure that items borrowed stay in good shape.
+* Admins may choose new admins, thus allowing more volunteers to accept items back.
+
+## Test accounts
+There aren't any basic accounts, as you have to make them yourself, but there is always a admin account.   
+Admin account credentials are: 
+        Username: admin
+
+        Password: admin
