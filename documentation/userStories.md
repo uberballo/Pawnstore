@@ -5,4 +5,4 @@
 |user | remove a item | I don't have to borrow it anymore
 |user | borrow a item | I can use the item
 |moderator | check borrow date | I can ensure that users return items on time
-|moderador | remove user | We can avoid problem users
+|moderador | Check in item | We can ensure the returned item is in acceptable condition
