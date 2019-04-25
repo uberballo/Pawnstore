@@ -13,7 +13,7 @@ Pawnstore project. User can lend and borrow items. You may browse items availabl
 * Add the new environment as your source with  
 `source venv/bin/activate`  
 * Install required libraries with the command  
-`python3 -m install -r requirements.txt`  
+`pip install -r requirements.txt`  
 * Run the application with  
 `python3 run.py`  
 * Now the application should be running at  
