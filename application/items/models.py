@@ -1,6 +1,8 @@
 from application import db
 from application.models import Base
 
+from sqlalchemy.sql import text
+
 class Item(Base):
 
     __tablename__ = "item"
@@ -21,3 +23,18 @@ class Item(Base):
     def __init__(self, name):
         self.name = name
         self.available= True
+
+    @staticmethod
+    def count_all_available_items_for_each_category():
+        stmt = text('''SELECT COUNT(Item.id), Category.category_type
+                       FROM Item
+                       LEFT JOIN Category ON Item.category_id = Category.id
+                       GROUP BY Category.category_type
+                       ORDER BY COUNT(Item.id) DESC;''')
+        
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"count":row[0], "name":row[1]})
+        
+        return response

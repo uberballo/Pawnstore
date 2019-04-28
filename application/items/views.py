@@ -11,6 +11,8 @@ from application.category.models import Category
 
 @app.route("/items", methods=["GET"])
 def items_index():
+        Item.count_all_available_items_for_each_category()
+
         stmt = text('''SELECT *, item.id AS itemid
         FROM Item
         JOIN category ON Item.category_id = Category.id
@@ -19,7 +21,6 @@ def items_index():
         res = db.engine.execute(stmt)
 
         return render_template("items/list.html", items = res, current_user_role=current_user.roles())
-        #return render_template("items/list.html", items = Item.query.all(), current_user_role=current_user.roles())
 
 
 @app.route("/items/new")

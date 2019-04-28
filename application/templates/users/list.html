@@ -4,21 +4,30 @@
  <table class="table">
      <thead>
      <tr>
-        <th>User</th>
+        <th>Name</th>
+        <th>Username</th>
         <th>Role</th>
      </tr>
      </thead>
      {% for user in users %}
         <tr>
             <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
             <td>{{ user.roles() }}</td>
             <td>
             <form method="POST" action="{{ url_for('set_user_privilege', user_id=user.id) }}">
                 <button type="submit" class="btn btn-primary">
-                    Toggle
+                    Toggle privilege
                 </button>
             </form>
             </td>
+            <td>
+             <form method="POST" action="{{ url_for('remove_user', user_id=user.id) }}">
+                 <button type="submit" class="btn btn-primary">
+                    Remove user
+                </button>
+            </form>
+        </td>
         </tr>
     {% endfor %}
  </table>

@@ -1,9 +1,12 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import  current_user
 
+from sqlalchemy.sql import text
+
 from application import app, db, login_required
 from application.auth.models import User
 from application.users.forms import UserForm
+from application.items.models import Item
 
 @app.route("/users/new", methods=["GET"])
 def user_create_form():
@@ -48,3 +51,20 @@ def user_create():
     db.session().commit()
 
     return redirect(url_for("auth_login"))
+
+@app.route("/remove/user/<user_id>", methods=["POST"])
+@login_required(role="ANY")
+def remove_user(user_id):
+    user = User.query.get(user_id)
+
+    if user.id != current_user.id:
+        stmt = text('''DELETE FROM Item
+                       WHERE Item.account_id = :userId;'''
+                    ).params(userId=user.id)
+        res = db.engine.execute(stmt)
+
+        db.session().delete(user)
+        db.session().commit()
+    
+    
+    return redirect(url_for("users_index"))

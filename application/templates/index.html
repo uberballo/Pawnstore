@@ -17,6 +17,23 @@
   </li>
   {% endfor %}
 </ul>
+
+<p>
+  There are currently: 
+</p>
+
+<ul>
+  {% for count in items_count%}
+  <li>
+    {% if count.count == 1 %}
+    {{count.count}} item in
+    {% else %}
+    {{count.count}} items in
+    {% endif %}
+    category <b>{{count.name}}</b>
+  </li>
+  {% endfor %}
+</ul>
 {% endif %}
 
 {% endblock %}
