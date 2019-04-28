@@ -22,13 +22,38 @@
             </form>
             </td>
             <td>
-             <form method="POST" action="{{ url_for('remove_user', user_id=user.id) }}">
-                 <button type="submit" class="btn btn-primary">
+             <form method="POST" id="removeUserForm" onSubmit="return confirm('Do you want to delete {{user.name}} and all their items?')" action="{{ url_for('remove_user', user_id=user.id) }}">
+                 <button  type="submit" class="btn btn-primary" >
                     Remove user
                 </button>
             </form>
         </td>
         </tr>
+
+ <!--Modal for the Remove user button. Doesnt work currently.-->
+ <div class="modal fade" id="confirmRemoval" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="RemoveUserLabel">Remove user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>All of the users items will be also removed.</p>
+        <p>Are you sure you want to remove user ?</p>
+        <p id="fname"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">Close</button>
+       <button href="#" type="submit" class="btn btn-primary" id="submit">Remove user</button>
+      </div>
+    </div>
+  </div>
+</div>
     {% endfor %}
  </table>
+
+
  {% endblock %}
