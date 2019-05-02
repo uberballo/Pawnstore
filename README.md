@@ -3,7 +3,7 @@ Pawnstore project. User can lend and borrow items. You may browse items availabl
 
 [Pawnstore heroku link](https://pawnstore.herokuapp.com/)  
 [User stories](https://github.com/uberballo/Pawnstore/blob/master/documentation/userStories.md)  
-[Database chart](https://github.com/uberballo/Pawnstore/blob/master/documentation/databaseChart.png) 
+[Database chart and CREATE TABLE-statements](https://github.com/uberballo/Pawnstore/blob/master/documentation/databaseChartsAndCreateTableStatements.md) 
 
 ## How to install
 * Make sure to have the latest verison of Python 3, python3-venv, SQLite 3 and pip. 
@@ -40,7 +40,6 @@ Now you may add items or borrow them. As the items owner, you may delete them.
 * Admins may choose new admins, thus allowing more volunteers to accept items back.
 
 ## Test accounts
-There aren't any basic accounts, as you have to make them yourself, but there is always a admin account.   
 Admin account credentials are:  
         
         Username: admin
