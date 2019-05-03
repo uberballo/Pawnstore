@@ -39,8 +39,11 @@ Now you may add items or borrow them. As the items owner, you may delete them.
 * To return borrowed item, you need to let the admins to check the borrowed item, then they will accept the item back. This is to ensure that items borrowed stay in good shape.
 * Admins may choose new admins, thus allowing more volunteers to accept items back.
 
+
 ## Test accounts
 Admin account credentials are:  
         
         Username: admin
         Password: admin
+
+If you download the code and install it locally, you have to either manually insert admin accounts or for testing purposes, disable comments from the insert_admin()-function found in \_init\_ file, located in application folder.
