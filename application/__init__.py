@@ -54,12 +54,6 @@ def login_required(role="ANY"):
                 
                 if current_user.roles() == role:
                         unauthorized = False
-                #old example code. Left just in case
-                
-                #for user_role in current_user.roles():
-                #    if user_role == role:
-                #        unauthorized = False
-                #        break
 
             if unauthorized:
                 return login_manager.unauthorized()
@@ -88,7 +82,7 @@ def insert_data(target, connection, **kw):
     {'category_type':'Tool'},
     {'category_type':'Homework'})
 
-
+#Only for testing purposes.
 def insert_admin(target, connection, **kw):
     connection.execute(target.insert(),
     {'name':'admin',
@@ -106,7 +100,8 @@ from application.users import views
 
 from application.auth.models import User
 
-event.listen(models.User.__table__, 'after_create',insert_admin)
+#For testing purposes, you may add admins by disabling the next comment. 
+#event.listen(models.User.__table__, 'after_create',insert_admin)
 
 @login_manager.user_loader
 def load_user(user_id):
