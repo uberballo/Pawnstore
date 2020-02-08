@@ -1,7 +1,6 @@
 # Pawnstore  
 Pawnstore project. User can lend and borrow items. You may browse items available, but to borrow, you need to make your own account. After making your account, you may add items and borrow items. When you're done using the borrowed item, Admins need to check the items quality, then may return the item to circulation or to remove the item from the list. 
 
-[Pawnstore heroku link](https://pawnstore.herokuapp.com/)  
 [User stories](https://github.com/uberballo/Pawnstore/blob/master/documentation/userStories.md)  
 [Database chart and CREATE TABLE-statements](https://github.com/uberballo/Pawnstore/blob/master/documentation/databaseChartsAndCreateTableStatements.md) 
 
